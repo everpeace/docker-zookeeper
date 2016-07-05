@@ -1,15 +1,18 @@
-FROM jboss/base-jdk:7
+# it is derived from alpine:3.4
+FROM java:openjdk-8-jre-alpine
 
 MAINTAINER Shingo Omura <everpeace@gmail.com>
 
-USER root
+ARG VERSION=3.4.6
+LABEL name="zookeeper" version=$VERSION
 
-ENV ZOOKEEPER_VERSION 3.4.6
+USER root
 EXPOSE 2181 2888 3888
 
-RUN yum -y install wget bind-utils && yum clean all \
-    && wget -q -O - http://apache.mirrors.pair.com/zookeeper/zookeeper-${ZOOKEEPER_VERSION}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz | tar -xzf - -C /opt \
-    && mv /opt/zookeeper-${ZOOKEEPER_VERSION} /opt/zookeeper \
+RUN mkdir -p /opt && \
+    apk add --no-cache wget bash \
+    && wget -q -O - http://apache.mirrors.pair.com/zookeeper/zookeeper-${VERSION}/zookeeper-${VERSION}.tar.gz | tar -xzf - -C /opt \
+    && mv /opt/zookeeper-${VERSION} /opt/zookeeper \
     && cp /opt/zookeeper/conf/zoo_sample.cfg /opt/zookeeper/conf/zoo.cfg \
     && mkdir -p /opt/zookeeper/{data,log}
 
