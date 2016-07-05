@@ -1,6 +1,6 @@
 FROM jboss/base-jdk:7
 
-MAINTAINER iocanel@gmail.com
+MAINTAINER Shingo Omura <everpeace@gmail.com>
 
 USER root
 

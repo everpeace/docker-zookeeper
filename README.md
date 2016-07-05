@@ -1,4 +1,4 @@
-Fabric8 - ZooKeeper Docker Image
+ZooKeeper Docker Image (forked from Fabric8)
 ================================
 
 A ZooKeeper Docker Image for use with Kubernetes.
@@ -11,7 +11,7 @@ The image supports the following ZooKeeper modes:
 # Standalone Mode
 To start the image in standalone mode you can simply use:
 
-    docker run fabric8/zookeeper
+    docker run everpeace/zookeeper
 
 # Clustered Mode
 To start the image in clustered mode you need to specify a couple of environment variables for the container.
@@ -51,7 +51,7 @@ Inside Kubernetes you can use a pod setup that looks like:
         "containers": [
           {
             "name": "server",
-            "image": "fabric8/zookeeper",
+            "image": "everpeace/zookeeper",
             "env":[
               { "name": "SERVER_ID", "value": "1" },
               { "name": "MAX_SERVERS", "value": "3" }
