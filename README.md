@@ -20,15 +20,16 @@ To start the image in clustered mode you need to specify a couple of environment
 | --------------------------------------------- | --------------------------------------|
 | SERVER_ID                                     | The id of the  server                 |
 | MAX_SERVERS                                   | The number of servers in the ensemble |
+| ENSEMBLE_NAME                                 | The name of this ensemble (default: "zookeeper") |
 
 
 Each container started with both of the above variables will use the following env variable setup:
 
-    server.1=zookeeper-1:2888:3888
-    server.2=zookeeper-2:2888:3888
-    server.3=zookeeper-3:2888:3888
+    server.1=$ENSEMBLE_NAME-1:2888:3888
+    server.2=$ENSEMBLE_NAME-2:2888:3888
+    server.3=$ENSEMBLE_NAME-3:2888:3888
     ...
-    server.N=zookeeper-N:2888:3888
+    server.N=$ENSEMBLE_NAME-N:2888:3888
 
 Ensuring that zookeeper-1, zookeeper-2 ... zookeeper-N can be resolved is beyond the scope of this image.
 You can use DNS, or Kubernetes services, etc depending on your environment (see below).

@@ -1,7 +1,6 @@
-#!/bin/bash
+#! /bin/bash
 
-
-echo "$SERVER_ID / $MAX_SERVERS" 
+echo "$SERVER_ID / $MAX_SERVERS / $ENSEMBLE_NAME"
 if [ ! -z "$SERVER_ID" ] && [ ! -z "$MAX_SERVERS" ]; then
   echo "Starting up in clustered mode"
   echo "" >> /opt/zookeeper/conf/zoo.cfg
@@ -10,7 +9,7 @@ if [ ! -z "$SERVER_ID" ] && [ ! -z "$MAX_SERVERS" ]; then
     if [ "$SERVER_ID" = "$i" ];then
       echo "server.$i=0.0.0.0:2888:3888" >> /opt/zookeeper/conf/zoo.cfg
     else
-      echo "server.$i=zookeeper-$i:2888:3888" >> /opt/zookeeper/conf/zoo.cfg
+      echo "server.$i=${ENSEMBLE_NAME:-zookeeper}-$i:2888:3888" >> /opt/zookeeper/conf/zoo.cfg
     fi
   done
   cat /opt/zookeeper/conf/zoo.cfg
