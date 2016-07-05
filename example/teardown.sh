@@ -1,9 +1,9 @@
 #!/bin/bash
 
-osc delete service zookeeper-1
-osc delete service zookeeper-2
-osc delete service zookeeper-3
+kubectl delete service zookeeper-1
+kubectl delete service zookeeper-2
+kubectl delete service zookeeper-3
 
-osc delete pod zookeeper-1
-osc delete pod zookeeper-2
-osc delete pod zookeeper-3
+kubectl delete pod zookeeper-1
+kubectl delete pod zookeeper-2
+kubectl delete pod zookeeper-3
