@@ -3,7 +3,7 @@ FROM java:openjdk-8-jre-alpine
 
 MAINTAINER Shingo Omura <everpeace@gmail.com>
 
-ARG VERSION=3.4.6
+ARG VERSION=3.4.5
 LABEL name="zookeeper" version=$VERSION
 
 USER root
