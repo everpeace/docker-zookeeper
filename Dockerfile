@@ -11,7 +11,7 @@ EXPOSE 2181 2888 3888
 
 RUN mkdir -p /opt && \
     apk add --no-cache wget bash \
-    && wget -q -O - http://apache.mirrors.pair.com/zookeeper/zookeeper-${VERSION}/zookeeper-${VERSION}.tar.gz | tar -xzf - -C /opt \
+    && wget -q -O - https://archive.apache.org/dist/zookeeper/zookeeper-${VERSION}/zookeeper-${VERSION}.tar.gz | tar -xzf - -C /opt \
     && mv /opt/zookeeper-${VERSION} /opt/zookeeper \
     && cp /opt/zookeeper/conf/zoo_sample.cfg /opt/zookeeper/conf/zoo.cfg \
     && mkdir -p /opt/zookeeper/{data,log}
